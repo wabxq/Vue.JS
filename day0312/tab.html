@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.clearfix::after {
+				content: "";
+				clear: both;
+				display: block;
+			}
+			
+			.tabs {
+				
+			}
+			
+			.tabs .tabItems {}
+			
+			.tabs .tabItems .item {
+				padding: 10px 30px;
+				float: left;
+				border-radius: 2px 2px 0px 0px;
+				margin: 0px 2px;
+				cursor: pointer;
+				border: 1px solid #000;
+				border-bottom: none;
+			}
+			
+			.tabContents .content {
+				width: 600px;
+				min-height: 300px;
+				text-align: center;
+				margin-left: 2px;
+				border: 1px solid #000;
+				border-top: none;
+			}
+			.tabs div div:nth-child(1){
+				background-color: #fdd;
+			}
+			.tabs div div:nth-child(2){
+				background-color: #dfd;
+			}
+			.tabs div div:nth-child(3){
+				background-color: #ddf;
+			}
+		</style>
+
+	</head>
+	<body>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+		<div class="tabs">
+		<div class="tabItems clearfix">
+			<div class="item" v-for="(item,index) in tabs" @click="clickIt(index)">
+				{{item}}
+			</div>
+		</div>
+		<div class="tabContents">
+			<div class="content" v-for="(item,index) in tabContents" v-show="currentshow==index">
+				{{item}}
+			</div>
+		</div>
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:".tabs",
+				data:{
+					tabs:['新闻','通知','公告'],
+					tabContents:['新闻内容','通内容知','公告内容'],
+					currentshow:0
+				},
+				methods:{
+					clickIt:function(index){
+						this.currentshow=index;
+					}
+				}
+				
+			});
+		</script>
+	</body>
+</html>
